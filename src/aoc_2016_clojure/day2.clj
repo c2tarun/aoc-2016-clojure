@@ -1,4 +1,4 @@
-(ns day2 (:require [clojure.string :as str]))
+(ns aoc-2016-clojure.day2 (:require [clojure.string :as str]))
 
 (def keypad [[:e :e :e :e :e :e]
              [:e :e :e 1 :e :e :e]
@@ -38,8 +38,8 @@
 (defn clean-input [input]
   (as-> input x
     (str/split x #"\n")
-    (mapv str/trim x)
-    (mapv seq x)))
+    (map str/trim x)
+    (map seq x)))
 
 (loop [input (clean-input input) current [3 1] final-code []]
   (if (empty? input)
