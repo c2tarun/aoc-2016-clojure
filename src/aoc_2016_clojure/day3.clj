@@ -5,17 +5,16 @@
     (> (reduce + (take 2 sides)) (last sides))))
 
 (defn to-int [str-array]
-  (map #(read-string %) str-array))
+  (mapv #(read-string %) str-array))
 
 (to-int ["1" "2" "3"])
 
 (def input (slurp "resources/day3-input.txt"))
 
-(def triangles (as-> input x
-                 (str/split x #"\n")
-                 (map str/trim x)
-                 (map #(str/split % #"\s\s*") x)
-                 (map to-int x)
-                 (filter is-triangle? x)))
-
-(count triangles)
+(as-> input x
+  (str/split x #"\n")
+  (map str/trim x)
+  (map #(str/split % #"\s\s*") x)
+  (map to-int x)
+  (filter is-triangle? x)
+  (count x))
